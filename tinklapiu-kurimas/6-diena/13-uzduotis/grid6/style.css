@@ -1,0 +1,18 @@
+.grid-container {
+  display: grid;
+}
+.photo {
+  grid-column-start: 1;
+}
+.other {
+  grid-column-start: 2;
+}
+body {
+  background-color: #dee4f0;
+}
+
+button {
+  padding: 5px;
+  background-color: black;
+  color: aliceblue;
+}
