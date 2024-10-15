@@ -11,8 +11,20 @@ body {
   background-color: #dee4f0;
 }
 
-button {
+input {
   padding: 5px;
+  width: 400px;
+  font-size: 14pt;
+}
+button {
+  padding: 10px;
   background-color: black;
   color: aliceblue;
+}
+.custom-form,
+input {
+  text-align: right;
+}
+.custom-form {
+  margin-right: 20px;
 }
