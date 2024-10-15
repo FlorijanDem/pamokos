@@ -1,0 +1,21 @@
+.grid-container {
+    display: grid;
+}
+.number1 {
+    grid-column-start: 1;
+}
+.number2 {
+    grid-column-start: 2;
+}
+.numder3 {
+    grid-row-start: 2;
+}
+.numder4 {
+    grid-row-start: 2;
+    grid-column-start: 2;
+}
+.photo {
+    grid-column-start: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
