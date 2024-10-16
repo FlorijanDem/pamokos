@@ -1,0 +1,32 @@
+.dot {
+  height: 15px;
+  width: 15px;
+  background-color: #920000;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 10px;
+  text-align: center;
+  color: aliceblue;
+  position: static;
+  margin-top: 25px;
+  position: absolute;
+  margin-left: -10px;
+}
+.in-one {
+    display: flex;
+}
+h2 {
+    color: #8b8b8b;
+    margin-top: -15px;
+    margin-left: 25px;
+}
+
+.element {
+    padding: 10px;
+}
+
+h1,
+h2 {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
