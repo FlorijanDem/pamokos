@@ -20,6 +20,8 @@ a {
 }
 .border-padding {
   padding: 100px;
+  width: 700px;
+  height: 430px;
 }
 .green-border {
   border-style: dotted;
