@@ -8,9 +8,9 @@
   text-align: center;
   color: aliceblue;
   position: static;
-  margin-top: 25px;
+  top: 45px;
   position: absolute;
-  margin-left: -10px;
+  left: 7px;
 }
 .in-one {
     display: flex;
