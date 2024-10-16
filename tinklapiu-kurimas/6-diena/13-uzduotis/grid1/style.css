@@ -1,22 +1,21 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 h1 {
-    
-    font-size: 4em;
+  font-size: 4em;
 }
 div {
-    vertical-align: text-bottom;
-    vertical-align: bottom;
-    position: unset;
-    bottom: 10px;
-    width: 60%;
+  vertical-align: text-bottom;
+  vertical-align: bottom;
+  position: unset;
+  bottom: 10px;
+  width: 60%;
 }
 p {
-    font-size: 24px;
+  font-size: 24px;
 }
 .blue-cat {
-    padding-top: 300px;
-    padding-left: 60px;
+  padding-top: 300px;
+  padding-left: 60px;
 }
