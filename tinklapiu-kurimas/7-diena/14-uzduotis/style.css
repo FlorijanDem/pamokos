@@ -30,17 +30,17 @@ a {
   border-width: 10px;
 }
 .space-cat {
-  margin-top: -300px;
+  top: 100px;
   position: absolute;
-  margin-left: -100px;
+  left: 200px;
 }
 .space-dog {
   position: absolute;
   padding: 40px;
   display: block;
-  margin-left: 450px;
-  margin-right: auto;
-  margin-top: -150px;
+  left: 450px;
+  right: auto;
+  top: 540px;
 }
 a::after {
   content: " |";
