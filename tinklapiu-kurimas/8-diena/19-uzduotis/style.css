@@ -3,11 +3,11 @@ hr + p {
     color: red;
 }
 /* Select the paragraphs that are siblings to h2 elements and give them a 20 pixel font size*/
-h2 + * {
+h2 ~ * {
     font-size: 20px;
 }
 /* Select the link inside of the footer and give it a magenta color WHEN a user hovers over it */
-footer a {
+footer a:hover {
     color: magenta;
 }
 /* Select any checked checkboxes and give them a box shadow of '0 0 0 3px orange' */
