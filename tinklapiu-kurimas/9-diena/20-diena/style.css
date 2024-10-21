@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+nav ul li {
+  display: inline-block;
+  padding: 1rem;
+  color: rgb(211, 211, 211);
+}
+nav ul {
+  text-align: center;
+}
+div img {
+  width: 10rem;
+}
+div ul li {
+  list-style-type: none;
+  font-size: 1rem;
+}
+section {
+  padding: 20px;
+  text-align: center;
+}
+h1,
+h3 {
+  color: blueviolet;
+}
+h1 {
+  font-family: "Cookie", cursive;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0.5rem;
+}
+h2 {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+nav {
+  background-color: blueviolet;
+}
+article {
+  background-image: url(/images/dog-glasses.jpg);
+  background-repeat: no-repeat;
+  height: 30vh;
+  background-size: 100%;
+}
+h2,
+h3 {
+  text-align: center;
+}
+
+@media screen and (min-width: 468px) {
+  section div {
+    display: inline-block;
+    padding: 10px;
+  }
+}
+.dogs {
+  background-color: rgb(63, 36, 88);
+  border-radius: 20px;
+}
+h3 {
+  padding: 1rem;
+}
