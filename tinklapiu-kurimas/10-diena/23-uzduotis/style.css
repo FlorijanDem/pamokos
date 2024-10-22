@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.content {
+  margin-bottom: 100px;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  background-color: #ebcc51;
+  justify-content: space-between;
+  padding: 20px;
+}
+header a i {
+  background-color: #d3b749;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+}
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #776829;
+}
+.toleft,
+.toright {
+  float: left;
+  width: 20%;
+  padding: 1rem;
+}
+a {
+  text-decoration: none;
+}
+.icon-bar {
+  display: flex;
+  background-color: #ebcc51;
+  justify-content: space-between;
+  padding: 3%;
+  position: fixed;
+  bottom: 0%;
+  width: 95%;
+  align-content: center;
+}
+.icon-bar a i {
+  color: white;
+  font-size: 1.5rem;
+}
+.icon-bar a {
+  display: flex;
+  flex-direction: column;
+}
