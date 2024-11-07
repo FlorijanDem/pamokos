@@ -1,7 +1,10 @@
-function sumNumbers(...(x, y , z)) {
-    sumNumbers([1, 4, 8])
+const initialValue = 0;
+function sumNumbers(array) {
+    sumNumbers = array.reduce(
+        (accumulator, currentValue) => accumulator + currentValue, initialValue
+    )
+    return sumNumbers;
 }
 
 
 console.log(sumNumbers([1, 4, 8]));
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#A_better_apply
