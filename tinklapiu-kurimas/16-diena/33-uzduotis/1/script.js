@@ -1,4 +1,4 @@
-const paragraph = document.getElementById("paragraph");
+
 const yellowClick = () => {
   document.getElementById("paragraph").style.color = "yellow";
 };
