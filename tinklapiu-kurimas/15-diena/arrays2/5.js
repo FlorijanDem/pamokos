@@ -1,8 +1,8 @@
 function evens(array) {
-  const forDeletion = []
+  const forDeletion = [];
   for (let i = 0; i < array.length; i++) {
     if (array[i] % 2 !== 0) {
-        forDeletion.push(array[i])
+      forDeletion.push(array[i]);
     }
   }
   array = array.filter((item) => !forDeletion.includes(item));
