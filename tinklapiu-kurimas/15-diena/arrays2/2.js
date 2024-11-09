@@ -1,16 +1,10 @@
 function anyPositive(array) {
-    const initialValue = 1
-;
-    const result = array.reduce(
-        (accumulator, currentValue) => accumulator * currentValue,
-    initialValue
-    )
-    if (result> 0) {
-        return true;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] <= 0) {
+      return false;
     }
-    else if (result <=0) {
-        return false;
-    }
+  }
+  return true;
 }
 console.log(anyPositive([1, 2, 3, 4, 5]));
 console.log(anyPositive([1, 2, -3, 4, 5]));
