@@ -1,0 +1,51 @@
+header {
+  background-image: url(/images/humansWorkOnPc.jpg);
+}
+.transparent-red {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+.dark-blue {
+  background-color: rgb(100, 77, 206);
+}
+a {
+  color: red !important;
+  text-decoration: none !important;
+}
+.white-keyboard-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  background-image: url(/images/whiteKeyboard.jpg);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.work-place {
+  width: 60%;
+}
+.transpared-box {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.distance-between {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+.grid-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+@media only screen and (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 1rem; 
+  }
+  #navOne {
+    grid-row: 1;
+  }
+  #navTwo {
+    grid-row: 2;
+  }
+  #navThree {
+    grid-row: 3;
+  }
+}
