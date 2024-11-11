@@ -62,8 +62,7 @@ nav ul li {
 }
 
 #button3,
-#button4
- {
+#button4 {
   color: white;
   background-color: #23a6f0;
   border-radius: 5px;
@@ -85,10 +84,10 @@ nav ul li {
   text-align: center;
 }
 h4 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 h5 {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 .comment-box1,
 .comment-box2 {
@@ -110,7 +109,11 @@ h5 {
   width: 100%;
 }
 .gradient-for-on-sofa-background {
-    background-image: linear-gradient(to left, rgba(255,0,0,0), rgb(255, 255, 255, 1));
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 0, 0, 0),
+    rgb(255, 255, 255, 1)
+  );
 }
 .form-box {
   display: flex;
@@ -137,7 +140,7 @@ h5 {
   padding: 1rem;
 }
 #information-table {
-    padding: 7%;
+  padding: 7%;
 }
 nav ul li:hover {
   color: red;
