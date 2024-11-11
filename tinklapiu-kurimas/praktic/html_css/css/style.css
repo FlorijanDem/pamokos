@@ -1,0 +1,209 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.image-btn {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.dark-blue {
+  background-color: #252b42;
+}
+header .dark-blue div {
+  display: flex;
+  justify-content: space-between;
+}
+header {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+main,
+footer {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  color: white;
+  text-align: center;
+}
+nav ul li {
+  list-style-type: none;
+  text-align: center;
+  margin-bottom: 5%;
+}
+.transpared-box {
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+#button1 {
+  color: white;
+  background-color: #23a6f0;
+  border: 0;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#button2 {
+  color: #23a6f0;
+  background-color: rgba(0, 0, 0, 0);
+  border: 2;
+  border-color: #23a6f0;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#button3,
+#button4
+ {
+  color: white;
+  background-color: #23a6f0;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.two-humans-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  background-image: url(/images/man-and-woman.jpg);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.cyan-background {
+  background-color: #8dc0f0;
+  padding: 2rem 2rem;
+  text-align: center;
+}
+h4 {
+    font-size: 2rem;
+}
+h5 {
+    font-size: 2.5rem;
+}
+.comment-box1,
+.comment-box2 {
+  text-align: left;
+  background-color: white;
+  color: black;
+  padding: 5%;
+  margin: 10%;
+}
+#appointment,
+#contact-us {
+  color: black;
+  text-align: left;
+}
+.on-sofa-background {
+  background-image: url(/images/on-sofa.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+.gradient-for-on-sofa-background {
+    background-image: linear-gradient(to left, rgba(255,0,0,0), rgb(255, 255, 255, 1));
+}
+.form-box {
+  display: flex;
+  flex-direction: column;
+}
+.form-box input {
+  margin: 3%;
+}
+.form-box button {
+  width: 30%;
+  display: block;
+  margin: auto;
+}
+.form-padding {
+  padding: 10%;
+}
+.big-screen-form-box {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 10%;
+}
+.big-screen-form-box tr th {
+  padding: 1rem;
+}
+#information-table {
+    padding: 7%;
+}
+nav ul li:hover {
+  color: red;
+  background-color: #23a6f0;
+}
+.avatar {
+  display: none;
+}
+.images-in-small-screen,
+.images-in-big-screen,
+.form-box,
+.big-screen-form-box {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  nav {
+    padding-top: 5rem;
+  }
+  table,
+  tr,
+  th {
+    display: inline;
+  }
+  .images-in-small-screen {
+    display: inline;
+  }
+  .form-box {
+    display: flex;
+  }
+  .insurens-service-buttons {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .insurens-service-buttons > * {
+    width: calc(100% / 1);
+  }
+}
+@media only screen and (min-width: 768px) {
+  nav ul li {
+    display: inline-flex;
+    padding: 0;
+  }
+  .flex-box-container {
+    display: flex;
+  }
+  .avatar {
+    display: block;
+  }
+  .big-screen-form-box {
+    display: flex;
+  }
+  .images-in-big-screen {
+    display: inline;
+  }
+  header {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    background-image: url(/images/man-and-woman.jpg);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .transpared-box {
+    text-align: left;
+    padding: 4rem;
+  }
+  #contact-us {
+    display: inline-flex;
+  }
+}
