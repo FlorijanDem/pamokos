@@ -104,6 +104,10 @@ function renderUserCards(users) {
   const USER_CONTAINER = document.getElementById("user-container");
   // utilize the map method and createUserCard function to generate an array of html views
   //iterate over the html views and append them to the USER_CONTAINER.
+  const views = users.map((user) => createUserCard(user));
+  views.forEach(element => {
+    USER_CONTAINER.insertAdjacentHTML("afterend", element)
+  });
 }
 
 const doubledArray = doubleNumbers(numbers);
