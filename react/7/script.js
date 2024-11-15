@@ -62,7 +62,6 @@ function flatten(arr) {
   return flattenedArray;
 }
 
-//Do this using if
 function voterResults(arr) {
   let result = [];
   let numYoungVotes = 0;
