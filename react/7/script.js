@@ -24,7 +24,7 @@ var wishlist = [
 var arrays = [["1", "2", "3"], [true], [4, 5, 6]];
 
 function total(arr) {
-  sum = 0;
+  let sum = 0;
   for (let i = 0; i < arr.length; i++) {
     sum += arr[i];
   }
@@ -32,7 +32,7 @@ function total(arr) {
 }
 
 function stringConcat(arr) {
-  sum = "";
+  let sum = "";
   for (let i = 0; i < arr.length; i++) {
     sum += arr[i];
   }
@@ -40,7 +40,7 @@ function stringConcat(arr) {
 }
 
 function totalVotes(arr) {
-  sum = 0;
+  let sum = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].voted == true) {
       sum++;
@@ -50,7 +50,7 @@ function totalVotes(arr) {
 }
 
 function shoppingSpree(arr) {
-  sum = 0;
+  let sum = 0;
   for (let i = 0; i < arr.length; i++) {
     sum += arr[i].price;
   }
@@ -63,7 +63,43 @@ function flatten(arr) {
 }
 
 //Do this using if
-function voterResult(arr) {}
+function voterResults(arr) {
+  let result = [];
+  let numYoungVotes = 0;
+  let numYoungPeople = 0;
+  let numMidVotesPeople = 0;
+  let numMidsPeople = 0;
+  let numOldVotesPeople = 0;
+  let numOldsPeople = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].age <= 25) {
+      numYoungPeople++;
+      if (arr[i].voted === true) {
+        numYoungVotes++;
+      }
+    }
+    else if (arr[i].age > 25 && arr[i].age < 36) {
+      numMidsPeople++;
+      if (arr[i].voted === true) {
+        numMidVotesPeople++;
+      }
+    }
+    else if (arr[i].age > 35 && arr[i].age < 56) {
+      numOldsPeople++;
+      if (arr[i].voted === true) {
+        numOldVotesPeople++;
+      }
+    }
+  }
+  result.push(`numYoungVotes: ${numYoungVotes}`)
+  result.push(`numYoungPeople: ${numYoungPeople}`)
+  result.push(`numMidVotesPeople: ${numMidVotesPeople}`)
+  result.push(`numMidsPeople: ${numMidsPeople}`)
+  result.push(`numOldVotesPeople: ${numOldVotesPeople}`)
+  result.push(`numOldsPeople: ${numOldsPeople}`)
+
+  return result;
+}
 
 console.log(total([1, 2, 3]));
 console.log(stringConcat([1, 2, 3]));
