@@ -7,10 +7,16 @@ console.log(swapcase('AaBbc'));
 
 // If x = uppercase change it to lower and the same
 function swapcase(text) {
+  const array = [];
   for (let i = 0; i < text.length; i++) {
-    if ((text[i].toUpperCase = text[i])) {
+    if (text[i].toUpperCase() === text[i]) {
+      array.push(text[i].toLowerCase());
+    } else {
+      array.push(text[i].toUpperCase());
     }
   }
+
+  return array.join("");
 }
 
 console.log(swapcase("AaBbc"));
