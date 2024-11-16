@@ -7,4 +7,17 @@ Output :
 "2015/02/02"
 */
 
+function max_date(array) {
+  const dateOne = new Date(array[0]).getTime();
+  const dateTwo = new Date(array[1]).getTime();
+  const dateThree = new Date(array[2]).getTime();
+  if (dateOne > dateTwo && dateOne > dateThree) {
+    return array[0];
+  } else if (dateTwo > dateOne && dateTwo > dateThree) {
+    return array[1];
+  } else {
+    return array[2];
+  }
+}
 
+console.log(max_date(["2015/02/01", "2015/02/02", "2015/01/03"]));

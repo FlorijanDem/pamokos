@@ -12,9 +12,14 @@ Output :
 undefined
 */
 
-// function is_weekend(dateOfWeek) {
-//    if (dateOfWeek.getDay())
-// }
+function is_weekend(dateOfWeek) {
+  const date = new Date(dateOfWeek);
+  const day = date.getDay();
+  const isWeekend = day === 6 || day === 0;
+  if (isWeekend === true) {
+    return "weekend";
+  }
+}
 
 console.log(is_weekend("Nov 15, 2014"));
 console.log(is_weekend("Nov 16, 2014"));
