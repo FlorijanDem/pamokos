@@ -10,4 +10,10 @@ Output :
 "w3resource"
 */
 
+function strip(text) {
+  return text.trim();
+}
 
+console.log(strip("w3resource "));
+console.log(strip(" w3resource"));
+console.log(strip(" w3resource "));
