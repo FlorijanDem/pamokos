@@ -1,16 +1,13 @@
-const signupForm = document.querySelector("#signup-form");
-signupForm.addEventListener("submit", (event) => {
-    event.preventDefault();    
-    let heigthToCalculate = document.getElementById("heigth").value;
-    let weigthToCalculate = document.getElementById("weigth").value;
+function calculateBMI() {
+  const height = document.getElementById("height").value;
+  const weight = document.getElementById("weight").value;
+  const resultElement = document.getElementById("bmiResult");
 
-    if (isNaN(heigthToCalculate) || isNaN(weigthToCalculate) || heigthToCalculate <= 0 || weigthToCalculate <= 0) {
-        alert("Please enter valid height and weight.");
-        return;
-    }
-
-
-    const BMI = weigthToCalculate/ (heigthToCalculate*2);
-    console.log(BMI)
-    document.getElementById(rezult).innerHTML = BMI;
-})
+  if (height > 0 && weight > 0) {
+    const heightInMeters = height / 100;
+    const bmi = weight / (heightInMeters * heightInMeters);
+    resultElement.textContent = `Jūsų KMI yra ${bmi.toFixed(2)}`;
+  } else {
+    resultElement.textContent = "Klaida";
+  }
+}

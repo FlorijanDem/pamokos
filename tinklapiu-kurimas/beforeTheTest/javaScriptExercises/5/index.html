@@ -3,26 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>BMI Calculator</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main>
-      <form id="signup-form">
-        <p>Įveskite savo ūgį</p>
+    <div class="calculator-container">
+      <label for="height">Įveskite savo ūgį</label>
+      <input
+        type="number"
+        id="height"
+        placeholder="Įveskite savo ūgį centimetrais"
+      />
 
-        <input
-          id="height"
-          type="number"
-          placeholder="Įveskite savo ūgį centimetrais"
-        />
-        <p>Įveskite savo svorį</p>
-        <input id="weight" type="number" placeholder="Svoris kg" />
-        <br />
-        <button type="submit">Skaičiuoti KMI</button>
-      </form>
-      <p id="rezult"></p>
-    </main>
+      <label for="weight">Įveskite savo svorį</label>
+      <input type="number" id="weight" placeholder="Svoris kg" />
+
+      <button onclick="calculateBMI()">Skaičiuoti KMI</button>
+
+      <div class="result" id="bmiResult"></div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
