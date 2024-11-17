@@ -9,7 +9,6 @@ console.log(case_insensitive_search('JavaScript Exercises', 'Exercisess'));
 "Not Matched"
 */
 
-//Undone
 function case_insensitive_search(text, value) {
   const result = text.search(new RegExp(value, "i"));
 
