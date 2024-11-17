@@ -9,22 +9,14 @@ console.log(string_chop('w3resource',3));
 ["w3r", "eso", "urc", "e"]
 */
 
-//Undone
-function string_chop(text, value) {
-    if (value === undefined || value === 0 || typeof(value) != "number") {
-        return text;
-    }
-    const arr = [];
-    for (let i = 0; i < text.length; i++) {
-        let x = [];
-        console.log(x)
-        for (let xi = 0; xi < value; xi++) {
-            x.push(text[i]);
-            i++
-        }
-    }
+function string_chop(text, limit = text.length) {
+  const result = [];
+  for (let i = 0; i < text.length; i += limit) {
+    result.push(text.slice(i, i + limit));
+  }
+  return result;
 }
 
-console.log(string_chop('w3resource'));
-console.log(string_chop('w3resource',2));
-console.log(string_chop('w3resource',3));
+console.log(string_chop("w3resource"));
+console.log(string_chop("w3resource", 2));
+console.log(string_chop("w3resource", 3));
