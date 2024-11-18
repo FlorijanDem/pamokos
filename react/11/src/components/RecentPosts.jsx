@@ -2,12 +2,13 @@ export default function RecentPosts() {
   return (
     <>
       <h3>Recent Posts</h3>
-      <div className="container">
+      <div className="container p-1">
         <div className="row">
           <div className="col-3">
             <img
               src="/src/components/images/small-high-speed.png"
               alt="Small high speed icon"
+              className="p-1"
             />
           </div>
           <div className="col-9">
@@ -19,6 +20,8 @@ export default function RecentPosts() {
             <img
               src="/src/components/images/small-paper-plane.png"
               alt="Small high speed icon"
+              className="p-1"
+
             />
           </div>
           <div className="col-9">
@@ -30,6 +33,8 @@ export default function RecentPosts() {
             <img
               src="/src/components/images/small-shield.png"
               alt="Small high speed icon"
+              className="p-1"
+
             />
           </div>
           <div className="col-9">

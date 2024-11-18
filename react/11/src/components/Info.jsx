@@ -1,6 +1,6 @@
 export default function Info() {
   return (
-    <div className="bg-info text-bg-primary">
+    <div className="bg-info text-bg-primary p-2">
       <h3>Prodduct Highlight</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit officia

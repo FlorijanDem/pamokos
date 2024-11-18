@@ -9,7 +9,7 @@ export default function CardTwo() {
         animi odio odit ut totam nesciunt veniam porro sapiente corrupti. Rerum
         labore eligendi exercitationem impedit sint ab veritatis, saepe nisi.
       </p>
-      <button type="button" className="btn btn-dark">
+      <button type="button" className="btn btn-dark rounded-0">
         Read more
       </button>
     </>
