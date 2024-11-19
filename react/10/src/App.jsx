@@ -12,63 +12,31 @@ export default function App() {
           <Header />
         </div>
       </div>
-      {/* On big screen */}
       <div className="row">
-        <div className="col-6 d-none d-sm-block">
+        <div className="col-12 col-sm-6">
           <PostImage />
           <PostContent />
         </div>
-        <div className="col-6 d-none d-sm-block">
-          <PostImage />
-          <PostContent />
-        </div>
-      </div>
-
-      {/* On small screens */}
-      <div className="row">
-        <div className="col-12 d-block d-sm-none">
-          <PostImage />
-          <PostContent />
-        </div>
-        <div className="col-12 d-block d-sm-none">
+        <div className="col-12 col-sm-6">
           <PostImage />
           <PostContent />
         </div>
       </div>
 
-      {/* On big Screens */}
       <div className="row">
-        <div className="col-3 d-none d-sm-block">
+        <div className="col-6 mb-2 col-sm-3">
           <Box />
         </div>
-        <div className="col-3 d-none d-sm-block">
+        <div className="col-6 mb-2 col-sm-3">
           <Box />
         </div>
-        <div className="col-3 d-none d-sm-block">
+        <div className="col-6 mb-2 col-sm-3">
           <Box />
         </div>
-        <div className="col-3 d-none d-sm-block">
+        <div className="col-6 mb-2 col-sm-3">
           <Box />
         </div>
       </div>
-
-      {/* On small screens */}
-      <div className="row">
-        <div className="col-6 d-block d-sm-none">
-          <Box />
-        </div>
-        <div className="col-6 d-block d-sm-none">
-          <Box />
-        </div>
-        <div className="col-6 d-block d-sm-none">
-          <Box />
-        </div>
-        <div className="col-6 d-block d-sm-none">
-          <Box />
-        </div>
-      </div>
-
     </div>
-    
   );
 }
