@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "title": "Aš mokausi HTML",
+    "content": "Aš mokausi HTML",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWWGTTXpgY4lClD_Ij4mAT4yVZruRLiJ-guQ&s"
+  },
+  {
+    "id": "2",
+    "title": "Aš mokausi CSS",
+    "content": "Aš mokausi CSS",
+    "img": "https://x-team.com/hs-fs/hubfs/Imported_Blog_Media/CSS-Code-2.jpg?width=2180&height=980&name=CSS-Code-2.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Aš mokausi JavaScript",
+    "content": "Aš mokausi JavaScript",
+    "img": "https://miro.medium.com/v2/resize:fit:1400/0*Bxt_7BaL_n4_I1vr"
+  }
+]
