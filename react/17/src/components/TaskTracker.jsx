@@ -26,6 +26,12 @@ export default function TaskTracker() {
       setTasks(updatedTasks);
     }
   };
+  const removeAll = () => {
+    const areYouSure = confirm("Are you sure?");
+    if (areYouSure) {
+      setTasks([]);
+    }
+  };
   return (
     <div className="container tasklist-bg">
       <h1>Task Tracker</h1>
@@ -34,8 +40,11 @@ export default function TaskTracker() {
         toggleComplete={toggleComplete}
         deleteTask={deleteTask}
       />
-      <button className="btn btn-success" onClick={addTask}>
+      <button className="btn btn-success m-1" onClick={addTask}>
         Add a task
+      </button>
+      <button className="btn btn-danger m-1" onClick={removeAll}>
+        Remove all task
       </button>
     </div>
   );
