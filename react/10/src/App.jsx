@@ -2,8 +2,6 @@ import Header from "./components/Header";
 import PostImage from "./components/PostImage";
 import PostContent from "./components/PostContent";
 import Box from "./components/Box";
-import "./App.css";
-
 export default function App() {
   return (
     <div className="container">
