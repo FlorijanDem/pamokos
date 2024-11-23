@@ -7,7 +7,13 @@ export default function TaskTracker() {
 
   const addTask = () => {
     const editTask = prompt("Enter a task:");
-    setTasks([...tasks, { text: editTask, completed: false }]);
+    if (editTask == "") {
+      alert("You input empty string")
+    } else {
+
+      setTasks([...tasks, { text: editTask, completed: false }]);
+    }
+    console.log(editTask)
   };
 
   const toggleComplete = (index) => {
