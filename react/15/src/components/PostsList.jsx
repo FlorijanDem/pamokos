@@ -23,7 +23,7 @@ export default function PostsList() {
     return (
       <PostContent
         key={uuidv4()}
-        title={posts.title}
+        title={post.title}
         content={post.content}
         img={post.img}
       />
