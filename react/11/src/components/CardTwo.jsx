@@ -3,7 +3,7 @@ export default function CardTwo() {
     <>
       <h1>Top 10 Contact Form</h1>
       <p>September 8, 2018</p>
-      <img src="/src/components/images/paper-plane.png" alt="Paper plane" />
+      <img src="src/assets/paper-plane.png" alt="Paper plane" />
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam eaque
         animi odio odit ut totam nesciunt veniam porro sapiente corrupti. Rerum

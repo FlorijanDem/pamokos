@@ -6,7 +6,7 @@ export default function RecentPosts() {
         <div className="row">
           <div className="col-3">
             <img
-              src="/src/components/images/small-high-speed.png"
+              src="src/assets/small-high-speed.png"
               alt="Small high speed icon"
               className="p-1"
             />
@@ -18,7 +18,7 @@ export default function RecentPosts() {
         <div className="row">
           <div className="col-3">
             <img
-              src="/src/components/images/small-paper-plane.png"
+              src="src/assets/small-paper-plane.png"
               alt="Small high speed icon"
               className="p-1"
 
@@ -31,7 +31,7 @@ export default function RecentPosts() {
         <div className="row">
           <div className="col-3">
             <img
-              src="/src/components/images/small-shield.png"
+              src="src/assets/small-shield.png"
               alt="Small high speed icon"
               className="p-1"
 

@@ -6,10 +6,10 @@ export default function Header() {
       <h1 className="header-title text-light">Marketer</h1>
       <div className="d-block d-md-none">
         <button>
-          <img src="/src/components/images/search.svg" alt="Search button" />
+          <img src="src/assets/search.svg" alt="Search button" />
         </button>
         <button>
-          <img src="/src/components/images/menu.svg" alt="Menu button" />
+          <img src="src/assets/menu.svg" alt="Menu button" />
           Menu
         </button>
       </div>
@@ -30,7 +30,7 @@ export default function Header() {
           Contact
         </button>
         <button className="btn btn-link text-light hoverEffect">
-          <img src="/src/components/images/search.svg" alt="Search icon" />
+          <img src="src/assets/search.svg" alt="Search icon" />
         </button>
       </div>
     </div>
