@@ -5,7 +5,7 @@ export default function Header() {
     <header>
       <h1 className="header-title">Page title</h1>
       <img
-        src="src/components/images/header-cat.jpg"
+        src="src/assets/header-cat.jpg"
         alt="Domestic cat"
         className="header-img w-100 object-fit-cover"
       />
