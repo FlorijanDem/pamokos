@@ -7,7 +7,8 @@ cd ..
 linesOfJs=$(find . -name "*.js" -exec cat {} + | wc --lines)
 linesOfHtml=$(find . -name "*.html" -exec cat {} + | wc --lines)
 linesOfCss=$(find . -name "*.css" -exec cat {} + | wc --lines)
-
+linesOfJsx=$(find . -name "*.jsx" -exec cat {} + | wc --lines)
+filesReadme=$(find . -name "README.md" -exec cat {} + | wc --lines)
 
 cd -
 date +"%A %d %B" >> ./output/totalLinesOfCodeAreWritten.txt
@@ -20,6 +21,12 @@ echo $linesOfHtml >> ./output/totalLinesOfCodeAreWritten.txt
 
 echo "Lines of Css code writen:" >> ./output/totalLinesOfCodeAreWritten.txt
 echo $linesOfCss >> ./output/totalLinesOfCodeAreWritten.txt
+
+echo "Lines of JSX code writen:" >> ./output/totalLinesOfCodeAreWritten.txt
+echo $linesOfJsx >> ./output/totalLinesOfCodeAreWritten.txt
+
+echo "Lines of README:" >> ./output/totalLinesOfCodeAreWritten.txt
+echo $filesReadme >> ./output/totalLinesOfCodeAreWritten.txt
 
 echo "" >> ./output/totalLinesOfCodeAreWritten.txt
 

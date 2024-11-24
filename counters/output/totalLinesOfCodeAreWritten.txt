@@ -30,3 +30,15 @@ Lines of HTML code writen:
 Lines of Css code writen:
 978
 
+Sunday 24 November
+Lines of JavaScript code writen:
+3440
+Lines of HTML code writen:
+2799
+Lines of Css code writen:
+1005
+Lines of JSX code writen:
+978
+Lines of README:
+97
+
