@@ -9,7 +9,7 @@ export default function TaskTracker() {
     const editTask = prompt("Enter a task:");
     if (editTask == "") {
       alert("You input empty string");
-    } else {
+    } else if (editTask != null){
       setTasks([...tasks, { text: editTask, completed: false }]);
     }
   };
