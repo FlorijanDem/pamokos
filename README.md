@@ -1,3 +1,4 @@
 # pamokos
 Part of the projects avalible on
-[Web site](demidovexercises.xyz)
+<a href="https://demidovexercises.xyz" target="_blank">demidovexercises</a>
+
