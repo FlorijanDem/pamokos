@@ -1,79 +1,83 @@
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 export default function Form() {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm()
+  } = useForm();
 
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch("http://localhost:8080/animals", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Response error!");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-  console.log(watch("example"))
+  console.log(watch("example"));
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="col-4 mx-auto">
       <div className="mb-3">
-        <label
-          htmlFor="name"
-          className="form-label"
-        >
+        <label htmlFor="name" className="form-label">
           Name
         </label>
         <input
           type="text"
           id="name"
           className="form-control"
+          {...register("name")}
         />
       </div>
 
       <div className="mb-3">
-        <label
-          htmlFor="type"
-          className="form-label"
-        >
+        <label htmlFor="type" className="form-label">
           Type
         </label>
         <input
           type="text"
           id="type"
           className="form-control"
+          {...register("type")}
         />
       </div>
 
       <div className="mb-3">
-        <label
-          htmlFor="breed"
-          className="form-label"
-        >
+        <label htmlFor="breed" className="form-label">
           Breed
         </label>
         <input
           type="text"
           id="breed"
           className="form-control"
+          {...register("breed")}
         />
       </div>
 
       <div className="mb-3">
-        <label
-          htmlFor="age"
-          className="form-label"
-        >
+        <label htmlFor="age" className="form-label">
           Age
         </label>
         <input
           type="number"
           id="age"
           className="form-control"
+          {...register("age")}
         />
       </div>
 
       <div className="mb-3">
-        <label
-          htmlFor="weight"
-          className="form-label"
-        >
+        <label htmlFor="weight" className="form-label">
           Weight
         </label>
         <input
@@ -81,27 +85,23 @@ export default function Form() {
           id="weight"
           step="0.01"
           className="form-control"
+          {...register("weight")}
         />
       </div>
 
       <div className="mb-3">
-        <label
-          htmlFor="gender"
-          className="form-label"
-        >
+        <label htmlFor="gender" className="form-label">
           Gender
         </label>
         <input
           type="text"
           id="gender"
           className="form-control"
+          {...register("gender")}
         />
       </div>
 
-      <button
-        type="submit"
-        className="btn btn-primary"
-      >
+      <button type="submit" className="btn btn-primary">
         Submit
       </button>
     </form>
