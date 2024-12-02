@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="container p-1">
-      <NavBar/>
+      <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/bookform" element={<BookForm />} />

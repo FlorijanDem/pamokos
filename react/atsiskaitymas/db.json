@@ -1,83 +1,37 @@
 {
   "books": [
     {
-      "id": "4003"
-    },
-    {
-      "id": "80c4"
-    },
-    {
-      "id": "1c84"
-    },
-    {
-      "title": "Loy",
-      "author": "Azxq",
-      "category": "hz",
-      "price": "3",
-      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image42.jpg",
-      "id": "2c84"
-    },
-    {
-      "title": "Loy",
-      "author": "Azxq",
-      "category": "hz",
-      "price": "3",
-      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image42.jpg",
-      "id": "4c84"
-    },
-    {
-      "id": "020e",
       "reserved": false,
-      "title": "Anithing",
-      "author": "Maybe",
-      "category": "Uncotegorize",
-      "price": "5",
-      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image13.jpg"
-    },
-    {
-      "id": "eb6d",
-      "reserved": false,
-      "title": "Anithing",
-      "author": "Maybe",
-      "category": "Uncotegorize",
-      "price": "5",
-      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image13.jpg"
-    },
-    {
-      "id": "e8ea",
-      "reserved": false,
-      "title": "Anithing",
-      "author": "Maybe",
-      "category": "Uncotegorize",
-      "price": "5",
-      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image13.jpg"
-    },
-    {
-      "id": "b1f9",
-      "reserved": true,
-      "title": "Anithing",
-      "author": "Maybe",
-      "category": "Uncotegorize",
-      "price": "5",
-      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image13.jpg"
-    },
-    {
-      "id": "4bb0",
-      "reserved": false,
-      "title": "Dwa",
-      "author": "Ssa fd",
-      "category": "Ds",
-      "price": "6",
-      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image13.jpg"
-    },
-    {
-      "id": "becb",
-      "reserved": false,
-      "title": "Jsu",
-      "author": "Saxvd",
-      "category": "Ou",
+      "author": "Teresa Lagrance",
       "price": "4",
-      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image23.jpg"
+      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image24.jpg",
+      "category": "Children books",
+      "id": "3f63"
+    },
+    {
+      "reserved": true,
+      "author": "Peter Brown",
+      "price": "5",
+      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image42.jpg",
+      "category": "Children books",
+      "id": "1a5d"
+    },
+    {
+      "reserved": true,
+      "author": "MARGARET FINNEGAN",
+      "price": "12",
+      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image41.jpg",
+      "category": "Children books",
+      "id": "e505"
+    },
+    {
+      "id": "5465",
+      "reserved": false,
+      "title": "The HobbiT",
+      "author": "Tolkien",
+      "category": "Children books",
+      "price": "3",
+      "cover": "https://getcovers.com/wp-content/uploads/2020/12/image37.jpg"
     }
   ]
 }

@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import { useState } from "react";
 export default function BookForm() {
   let navigate = useNavigate();
   const {
@@ -38,6 +37,7 @@ export default function BookForm() {
             maxLength: 100,
           })}
           placeholder="Title"
+          className="m-2"
         />
         <input
           {...register("author", {
@@ -45,15 +45,18 @@ export default function BookForm() {
             pattern: /^[A-Z][a-zA-Z\s]*$/,
           })}
           placeholder="Author"
+          className="m-2"
         />
         <input
           {...register("category", { required: true })}
           placeholder="Category"
+          className="m-2"
         />
 
         <input
           {...register("price", { required: true, min: 1 })}
           placeholder="Price"
+          className="m-2"
         />
         <input
           {...register("cover", {
@@ -62,9 +65,10 @@ export default function BookForm() {
               /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/,
           })}
           placeholder="Cover"
+          className="m-2"
         />
         <br />
-        <input type="submit" className="btn btn-success" />
+        <input type="submit" className="btn btn-success m-2" />
       </form>
     </>
   );
