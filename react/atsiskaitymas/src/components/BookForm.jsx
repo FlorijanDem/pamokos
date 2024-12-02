@@ -1,15 +1,17 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
 import { useNavigate } from "react-router";
-
+import { useState } from "react";
 export default function BookForm() {
   let navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      reserved: false,
+    },
+  });
 
   const onSubmit = async (values) => {
     try {
@@ -20,18 +22,15 @@ export default function BookForm() {
           "Content-type": "application/json",
         },
       });
+      navigate("/");
       if (response.ok) {
         throw new Error("Response error!");
       }
-      navigate("/");
     } catch (error) {}
   };
-
-//   const { register, handleSubmit } = useForm();
-  //   const onSubmit = (data) => console.log(data);
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="row m-5 p-2">
         <input
           {...register("title", {
             required: true,
@@ -51,11 +50,7 @@ export default function BookForm() {
           {...register("category", { required: true })}
           placeholder="Category"
         />
-        {/* <select {...register("gender")}>
-              <option value="female">female</option>
-              <option value="male">male</option>
-              <option value="other">other</option>
-            </select> */}
+
         <input
           {...register("price", { required: true, min: 1 })}
           placeholder="Price"
@@ -68,7 +63,8 @@ export default function BookForm() {
           })}
           placeholder="Cover"
         />
-        <input type="submit" />
+        <br />
+        <input type="submit" className="btn btn-success" />
       </form>
     </>
   );

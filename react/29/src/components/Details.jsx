@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
-export default function Details() {
+export default function Details(props) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,6 +17,7 @@ export default function Details() {
         const data = await response.json();
         setData(data);
         setLoading(false);
+        console.log(data)
       } catch (error) {
         setError(error.message);
         setLoading(false);
@@ -32,8 +33,8 @@ export default function Details() {
   }
   return (
     <div className="container">
-      <h1>Product ID: {id}</h1>
-      <h2>Name: {data.name}</h2>
+      <h1>Product ID: {data?.id}</h1>
+      <h2>Name: {data?.name}</h2>
       <h2>Company: {data.company}</h2>
       <h2>
         Location: {data.address} 

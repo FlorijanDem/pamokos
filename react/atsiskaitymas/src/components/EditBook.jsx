@@ -52,7 +52,7 @@ export default function EditBook() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="row m-5 p-2">
         <input
           {...register("title", {
             required: true,
@@ -72,11 +72,6 @@ export default function EditBook() {
           {...register("category", { required: true })}
           placeholder="Category"
         />
-        {/* <select {...register("gender")}>
-              <option value="female">female</option>
-              <option value="male">male</option>
-              <option value="other">other</option>
-            </select> */}
         <input
           {...register("price", { required: true, min: 1 })}
           placeholder="Price"
@@ -89,7 +84,8 @@ export default function EditBook() {
           })}
           placeholder="Cover"
         />
-        <input type="submit" />
+        <br />
+        <input type="submit" className="btn btn-success"/>
       </form>
     </>
   );

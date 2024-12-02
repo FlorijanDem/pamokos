@@ -20,9 +20,9 @@ export default function Card(props) {
           </svg>
           <h2 className="fw-normal">{props.login}</h2>
           <p>
-            <a className="btn btn-secondary">
+            <button className="btn btn-secondary">
               <Link to={"/users/"}>View details &raquo</Link>;
-            </a>
+            </button>
           </p>
         </div>
     </>

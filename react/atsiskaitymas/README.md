@@ -1,3 +1,6 @@
+To run use json-server with port 3001
+npx json-server -p 3001 db.json
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

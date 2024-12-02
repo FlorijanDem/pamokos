@@ -27,6 +27,7 @@ export default function MainPage() {
             price={user.price}
             cover={user.cover}
             id={user.id}
+            reserved={user.reserved}
           />
         );
       })}

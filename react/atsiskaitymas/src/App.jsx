@@ -1,6 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { Routes, Route } from "react-router";
 import MainPage from "./components/MainPage";
@@ -12,7 +10,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <div className="container p-1">
       <NavBar/>
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -20,7 +18,7 @@ function App() {
         <Route path="/editbook/:id" element={<EditBook />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 
