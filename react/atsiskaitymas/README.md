@@ -1,5 +1,5 @@
 To run use json-server with port 3001
-npx json-server -p 3001 db.json
+"npx json-server -p 3001 db.json"
 
 # React + Vite
 
