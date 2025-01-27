@@ -4,6 +4,7 @@ const { testConnection, sql } = require("./dbConnection");
 
 const port = process.env.PORT;
 
+
 (async () => {
   try {
     await testConnection();
