@@ -11,7 +11,14 @@ const sql = postgres({
 
 const testConnection = async () => {
   try {
-    await sql`SELECT 1 AS result`;
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("Connection timeout")), 5000)
+    );
+
+    await Promise.race([
+      sql`SELECT 1 AS result`,
+      timeoutPromise
+    ]);
 
     console.log(`DB connected`);
   } catch (err) {
