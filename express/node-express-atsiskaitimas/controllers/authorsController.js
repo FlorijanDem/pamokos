@@ -1,16 +1,16 @@
 const Author = require('../models/Model');
 
 exports.getAllAuthors = function(req, res) {
-    Author.getAll((err, todos) => {
+    Author.getAll((err, data) => {
         if (err) throw err;
-        res.json(todos);
+        res.json(data);
     });
 };
 
 exports.getAuthorById = function(req, res) {
-    Author.getAuthorById(req.params.id, (err, todo) => {
+    Author.getAuthorById(req.params.id, (err, data) => {
         if (err) throw err;
-        res.json(todo);
+        res.json(data);
     });
 };
 

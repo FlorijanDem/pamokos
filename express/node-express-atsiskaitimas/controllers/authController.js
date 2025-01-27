@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 const argon2 = require("argon2");
+const User = require('../models/userModel');
+
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
