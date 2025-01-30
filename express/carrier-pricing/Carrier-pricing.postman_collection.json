@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "5b9eea7a-d1fc-4759-9e68-bc8aed5cd67c",
+		"name": "Carrier-pricing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41563629"
+	},
+	"item": [
+		{
+			"name": "Carier vehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pickup_postcode\": \"SW1A1AA\",\r\n    \"vehicle\": \"bicycle\",\r\n    \"delivery_postcode\": \"EC2A3LT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5002/carier/vehicle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"carier",
+						"vehicle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Carier",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pickup_postcode\": \"SW1A1AA\",\r\n    \"delivery_postcode\": \"EC2A3LT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5002/carier",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"carier"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Price by carrier name",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pickup_postcode\": \"SW1A1AA\",\r\n    \"delivery_postcode\": \"EC2A3LT\",\r\n    \"carrier_name\": \"RoyalPackages\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5002/carier/byname",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"carier",
+						"byname"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Variable prices by vehicle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pickup_postcode\": \"SW1A1AA\",\r\n    \"delivery_postcode\": \"EC2A3LT\",\r\n    \"vehicle\": \"small_van\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5002/carier/byvehicle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"carier",
+						"byvehicle"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
