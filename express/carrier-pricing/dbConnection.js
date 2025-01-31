@@ -1,4 +1,5 @@
 const postgres = require("postgres");
+require("dotenv").config();
 
 const sql = postgres({
   host: process.env.DB_HOST,
@@ -6,16 +7,19 @@ const sql = postgres({
   database: process.env.DB_NAME,
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
+
 });
 
 const testConnection = async () => {
   try {
-    await sql`SELECT 1 AS result`;
+    await sql`
+    SELECT * 
+    FROM price_list`;
     console.log(`Connection to database successfull`);
   } catch (err) {
-    console.error(`Connection to database failed: ${err.message}`);
+    console.error(`Connection to database failed:`, err);
     throw err;
   }
 };
 
-module.exports = { sql, testConnection}
+module.exports = { sql, testConnection };

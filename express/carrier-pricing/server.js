@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
-// const {sql, testConnection} = require("./dbConnection")
-// testConnection()
+const {sql, testConnection} = require("./dbConnection")
+testConnection()
 
 require("dotenv").config();
 const port = process.env.PORT;
+// Need API key for operate
 const OpenCageApi = process.env.OPEN_CAGE_API;
 
 const carrier_data = require("./carrier-data.json");
@@ -44,7 +45,7 @@ app.post("/carier", async (req, res) => {
   }
 
   async function getCoordinates(postcode) {
-    const apiKey = OpenCageApi; // Replace with your OpenCage API key
+    const apiKey = OpenCageApi;
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${postcode}&key=${apiKey}`;
 
     const response = await fetch(url);
@@ -107,7 +108,7 @@ app.post("/carier/vehicle", async (req, res) => {
   }
 
   async function getCoordinates(postcode) {
-    const apiKey = OpenCageApi; // Replace with your OpenCage API key
+    const apiKey = OpenCageApi;
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${postcode}&key=${apiKey}`;
 
     const response = await fetch(url);
@@ -176,7 +177,7 @@ app.post("/carier/byvehicle", async (req, res) => {
 
   carrier_data.forEach((carrier) => {
     // For each carrier, find the services that match the selected vehicle
-    carrier.services.forEach((service) => {
+    carrier.services.forEach(async (service) => {
       if (service.vehicles.includes(vehicle)) {
         // Calculate the price based on base price and markup
         const price = carrier.base_price + service.markup;
@@ -186,10 +187,11 @@ app.post("/carier/byvehicle", async (req, res) => {
           price: price,
           delivery_time: service.delivery_time,
         });
-      }
+        }
     });
   });
 
+  priceList.sort((a, b) => a.price - b.price);
   try {
     res.json({
       pickup_postcode,
@@ -197,6 +199,17 @@ app.post("/carier/byvehicle", async (req, res) => {
       vehicle,
       price_list: priceList,
     });
+    for (let i = 0; i < priceList.length; i++) {
+      try {
+        await sql`
+          INSERT INTO price_list (service, price, delivery_time)
+          VALUES (${priceList[i].service}, ${priceList[i].price}, ${priceList[i].delivery_time})
+        `
+      } catch (err) {
+        console.error(`Connection to database failed:`, err);
+        throw err;
+      }
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to calculate the distance" });
