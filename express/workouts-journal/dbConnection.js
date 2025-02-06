@@ -12,8 +12,7 @@ const sql = postgres({
 const testConnection = async () => {
   try {
     await sql`
-      SELECT * 
-      FROM price_list`;
+      SELECT 1 AS result`;
     console.log(`Connection to database successfull`);
   } catch (err) {
     console.error(`Connection to database failed:`, err);

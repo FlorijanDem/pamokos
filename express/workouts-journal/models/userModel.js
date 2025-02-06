@@ -17,11 +17,31 @@ exports.createUser = async (user) => {
   return newUser;
 };
 
-exports.loginUser = async (username) => {
+exports.loginUser = async (username, password) => {
+  const name = username.username
+  const pass = username.password
   const [user] = await sql`
-        SELECT users.*
+        SELECT users.id, users.username, users.email, users.created_at, users.updated_at
         FROM users
-        WHERE users.username = ${username}
+        WHERE users.username = ${name} AND users.password = ${pass};
     `;
+  return user;
+};
+
+exports.getAllUsers = async () => {
+  const users = await sql`
+    SELECT users.id, users.username, users.email, users.created_at, users.updated_at
+        FROM users;
+  `
+  console.log(users)
+  return users;
+}
+
+exports.getUserById = async (id) => {
+  const [user] = await sql`
+    SELECT users.*
+    FROM users
+    WHERE users.id = ${id};
+  `;
   return user;
 };
