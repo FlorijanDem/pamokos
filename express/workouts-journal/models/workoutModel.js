@@ -31,3 +31,12 @@ exports.workoutById = async (id) => {
     `;
   return workout;
 };
+
+exports.editWorkout = async (id, name) => {
+  const [workout] = await sql`
+      UPDATE workouts
+      SET name= ${name}
+      WHERE id=${id};
+  `;
+  return workout;
+};
