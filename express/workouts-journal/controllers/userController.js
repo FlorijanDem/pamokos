@@ -6,6 +6,7 @@ const {
   getUserById,
   getAllUsers,
   getUserByName,
+  addWorkoutToUser,
 } = require("../models/userModel");
 
 const signToken = (id) => {
@@ -18,14 +19,14 @@ const signToken = (id) => {
 
 const sendCookie = (token, res) => {
   const cookieOptions = {
-    expires: new Date (
+    expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
   };
 
   res.cookie("jwt", token, cookieOptions);
-}
+};
 
 exports.createUser = async (req, res, next) => {
   try {
@@ -58,7 +59,7 @@ exports.loginUser = async (req, res, next) => {
       password,
     });
     const token = signToken(user.id);
-    sendCookie(token, res)
+    sendCookie(token, res);
     res.status(200).json({
       message: "Success! You are logged in!",
       user,
@@ -110,6 +111,22 @@ exports.getUserByName = async (req, res, next) => {
     res.status(200).json({
       user,
     });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.addWorkoutToUser = async (req, res, next) => {
+  const newWorkout = req.body;
+
+  try {
+    const workout = await addWorkoutToUser({
+      ...newWorkout,
+    });
+    res.status(200).json({
+      status: "success",
+      workout,
+    })
   } catch (err) {
     next(err);
   }

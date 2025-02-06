@@ -10,7 +10,7 @@ exports.createWorkout = async (workout) => {
   );
     `;
   const [newWorkout] = await sql`
-        INSERT INTO workouts ${sql(workout, "name", "user_id")}
+        INSERT INTO workouts ${sql(workout, "name")}
         RETURNING workouts.*
     `;
   return newWorkout;
