@@ -1,9 +1,7 @@
 const express = require("express");
 const {
   createUser,
-  loginUser,
-  getAllUsers,
-  getUserById,
+  loginUser
 } = require("../controllers/userController");
 
 const authRouter = express.Router();

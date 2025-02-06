@@ -18,8 +18,8 @@ exports.createUser = async (user) => {
 };
 
 exports.loginUser = async (username, password) => {
-  const name = username.username
-  const pass = username.password
+  const name = username.username;
+  const pass = username.password;
   const [user] = await sql`
         SELECT users.id, users.username, users.email, users.created_at, users.updated_at
         FROM users
@@ -32,10 +32,10 @@ exports.getAllUsers = async () => {
   const users = await sql`
     SELECT users.id, users.username, users.email, users.created_at, users.updated_at
         FROM users;
-  `
-  console.log(users)
+  `;
+  console.log(users);
   return users;
-}
+};
 
 exports.getUserById = async (id) => {
   const [user] = await sql`
@@ -46,11 +46,11 @@ exports.getUserById = async (id) => {
   return user;
 };
 
-exports.getUserByName = async (name) => {
+exports.getUserByName = async (username) => {
   const [user] = await sql`
     SELECT users.*
     FROM users
-    WHERE users.id = ${name};
-  `
-  return user
-}
+    WHERE users.username = ${username};
+  `;
+  return user;
+};
