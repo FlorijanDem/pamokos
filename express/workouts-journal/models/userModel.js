@@ -55,6 +55,16 @@ exports.getUserByName = async (username) => {
   return user;
 };
 
+exports.usersWorkouts = async (id) => {
+  const user = id.id;
+  const workouts = await sql`
+    SELECT workouts.*
+    FROM workouts
+    WHERE user_id= ${user};
+  `;
+  return workouts;
+}
+
 exports.addWorkoutToUser = async (workout) => {
   const [workoutToUser] = await sql`
     INSERT INTO workouts ${sql(workout, "name", "user_id")}

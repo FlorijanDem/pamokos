@@ -7,6 +7,7 @@ const {
   getAllUsers,
   getUserByName,
   addWorkoutToUser,
+  usersWorkouts,
 } = require("../models/userModel");
 
 const signToken = (id) => {
@@ -126,7 +127,22 @@ exports.addWorkoutToUser = async (req, res, next) => {
     res.status(200).json({
       status: "success",
       workout,
-    })
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.usersWorkouts = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const workouts = await usersWorkouts({
+      id,
+    });
+    res.status(200).json({
+      status: "success",
+      workouts,
+    });
   } catch (err) {
     next(err);
   }
