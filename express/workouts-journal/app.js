@@ -1,6 +1,7 @@
 const express = require("express");
 const authRouter = require("./routes/authRouter");
-const usersRouter = require("./routes/usersRouter")
+const usersRouter = require("./routes/usersRouter");
+const workoutsRouter = require("./routes/workoutsRouter")
 const errorHandler = require("./middleware/errorHandler");
 const AppError = require("./utils/appError")
 
@@ -9,6 +10,7 @@ app.use(express.json());
 
 app.use("/api/v1", authRouter);
 app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/workouts", workoutsRouter);
 
 
 app.all("*", (req, res, next) => {
