@@ -4,7 +4,7 @@ exports.createWorkout = async (workout) => {
   await sql`
     CREATE TABLE IF NOT EXISTS workouts (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
     date TIMESTAMP,
     user_id int
   );
@@ -14,4 +14,20 @@ exports.createWorkout = async (workout) => {
         RETURNING workouts.*
     `;
   return newWorkout;
+};
+exports.allWorkouts = async () => {
+  const all = await sql`
+        SELECT *
+        FROM workouts;
+    `;
+  return all;
+};
+
+exports.workoutById = async (id) => {
+  const [workout] = await sql`
+        SELECT *
+        FROM workouts
+        WHERE id = ${id};
+    `;
+  return workout;
 };
