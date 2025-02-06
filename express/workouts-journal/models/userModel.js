@@ -45,3 +45,12 @@ exports.getUserById = async (id) => {
   `;
   return user;
 };
+
+exports.getUserByName = async (name) => {
+  const [user] = await sql`
+    SELECT users.*
+    FROM users
+    WHERE users.id = ${name};
+  `
+  return user
+}

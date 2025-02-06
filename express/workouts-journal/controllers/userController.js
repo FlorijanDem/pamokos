@@ -4,6 +4,7 @@ const {
   loginUser,
   getUserById,
   getAllUsers,
+  getUserByName,
 } = require("../models/userModel");
 
 exports.createUser = async (req, res, next) => {
@@ -69,6 +70,22 @@ exports.getUserById = async (req, res, next) => {
 
     res.status(200).json({
       status: "success",
+      user,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getUserByName = async (req, res, next) => {
+  const username = req.params.username;
+
+  try {
+    const user = await getUserByName(username);
+
+    user.password = undefined;
+
+    res.status(200).json({
       user,
     });
   } catch (err) {
