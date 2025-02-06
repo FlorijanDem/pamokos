@@ -4,6 +4,7 @@ const {
   allWorkouts,
   workoutById,
   editWorkout,
+  deleteWorkout,
 } = require("../models/workoutModel");
 
 exports.createWorkout = async (req, res, next) => {
@@ -54,9 +55,24 @@ exports.editWorkout = async (req, res, next) => {
     const name = req.body.name;
     const workoutId = req.params.id;
     const workout = await editWorkout(workoutId, name);
-    
+
     res.status(200).json({
       status: 1,
+      workout,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.deleteWorkout = async (req, res, next) => {
+  try {
+    const workoutId = req.params.id;
+    const workout = await deleteWorkout(workoutId);
+    // With status code 204 you cannot transfer a data, change to 200
+    // if you want to see message
+    res.status(204).json({
+      message: "The selected workout was removed",
       workout,
     });
   } catch (err) {
