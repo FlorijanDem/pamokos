@@ -5,7 +5,7 @@ const {
   loginUser,
   getUserById,
   getAllUsers,
-  getUserByName
+  getUserByName,
 } = require("../models/userModel");
 
 const signToken = (id) => {
@@ -113,4 +113,45 @@ exports.getUserByName = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
+
+exports.protect = async (req, res, next) => {
+  try {
+    let token = req.cookies?.jwt;
+
+    if (!token) {
+      throw new AppError(
+        "You are not logged in! Please log in to get access",
+        401
+      );
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const currentUser = await getUserById(decoded.id);
+    if (!currentUser) {
+      throw new AppError(
+        "The user belonging to this token does no longer exist.",
+        401
+      );
+    }
+    req.user = currentUser;
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.allowAccessTo = (...roles) => {
+  return (req, res, next) => {
+    try {
+      if (!roles.includes(req.user.role)) {
+        throw new AppError(
+          "You do not have permission to perform this action",
+          403
+        );
+      }
+    } catch (err) {
+      next(err);
+    }
+  };
 };
