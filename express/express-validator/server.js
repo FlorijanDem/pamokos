@@ -3,24 +3,19 @@ const app = express();
 require("dotenv").config();
 const port = process.env.PORT;
 app.use(express.json());
-const { query } = require("express-validator");
+const AppError = require("./utils/appError");
 
-const products = [];
+const productsRouter = require("./routes/productsRouter");
+const registerRouter = require("./routes/registerRouter");
+const usersRouter = require("./routes/usersRouter");
 
-app.post("/addproduct", (req, res) => {
-  const { price, category } = req.body;
-  const newQuery = {
-    price,
-    category,
-  };
-  try {
-    const newObject = products.push(newQuery);
-    res.status(200).json(products);
-  } catch (err) {
-    console.error(err);
-  }
+app.use("/products", productsRouter);
+app.use("/register", registerRouter);
+app.use("/users", usersRouter);
+
+app.all("*", (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
-
 
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
