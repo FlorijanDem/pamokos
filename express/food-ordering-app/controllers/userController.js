@@ -7,6 +7,7 @@ const {
   getAllUsers,
   getUserByName,
 } = require("../models/userModel");
+require("dotenv").config();
 
 const signToken = (id) => {
   const token = jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -118,6 +119,7 @@ exports.getUserByName = async (req, res, next) => {
 exports.protect = async (req, res, next) => {
   try {
     let token = req.cookies?.jwt;
+    console.log(token);
 
     if (!token) {
       throw new AppError(
@@ -125,17 +127,40 @@ exports.protect = async (req, res, next) => {
         401
       );
     }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    const currentUser = await getUserById(decoded.id);
-    if (!currentUser) {
-      throw new AppError(
-        "The user belonging to this token does no longer exist.",
-        401
+    try {
+      const decoded = jwt.verify(
+        token,
+        process.env.JWT_SECRET,
+        (err, authorizedData) => {
+          if (err) {
+            //If error send Forbidden (403)
+            console.log("ERROR: Could not connect to the protected route");
+            res.sendStatus(403);
+          } else {
+            //If token is successfully verified, we can send the autorized data
+            res.json({
+              message: "Successful log in",
+              authorizedData,
+            });
+            console.log("SUCCESS: Connected to protected route");
+          }
+        }
       );
+      const currentUser = await getUserById(decoded.id);
+
+      if (!currentUser) {
+        throw new AppError(
+          "The user belonging to this token does no longer exist.",
+          401
+        );
+      }
+
+      req.user = currentUser;
+      next();
+    } catch (err) {
+      next(err);
     }
-    req.user = currentUser;
-    next();
   } catch (err) {
     next(err);
   }
