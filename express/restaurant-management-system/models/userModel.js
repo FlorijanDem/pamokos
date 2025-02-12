@@ -64,4 +64,13 @@ exports.getById = async (id) => {
     WHERE id=${id.id}
   `;
   return user;
-}
+};
+
+exports.deleteById = async (id) => {
+  const user = await sql`
+    DELETE
+    FROM users
+    WHERE id=${id.id}
+  `;
+  return user;
+};

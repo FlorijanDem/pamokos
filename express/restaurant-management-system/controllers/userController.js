@@ -1,6 +1,11 @@
 const AppError = require("../utils/appError");
 
-const { createUser, getAllUsers, getById } = require("../models/userModel");
+const {
+  createUser,
+  getAllUsers,
+  getById,
+  deleteById,
+} = require("../models/userModel");
 
 exports.createUser = async (req, res, next) => {
   const data = req.body;
@@ -29,11 +34,21 @@ exports.getAllUsers = async (req, res, next) => {
 };
 
 exports.getById = async (req, res, next) => {
-    const id = req.params.id;
-    try {
-        const user = await getById({id})
-        res.status(200).json({user})
-    } catch (err) {
-        console.error(err)
-    }
-}
+  const id = req.params.id;
+  try {
+    const user = await getById({ id });
+    res.status(200).json({ user });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+exports.deleteById = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const user = await deleteById({ id });
+    res.status(204).json({ user });
+  } catch (err) {
+    console.error(err);
+  }
+};
