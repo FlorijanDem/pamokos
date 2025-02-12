@@ -40,10 +40,11 @@ exports.getAllUsers = async () => {
 
 exports.getUserById = async (id) => {
   const [user] = await sql`
-    SELECT users.*
+    SELECT *
     FROM users
     WHERE users.id = ${id};
   `;
+
   return user;
 };
 

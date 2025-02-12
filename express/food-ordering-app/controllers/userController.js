@@ -10,8 +10,9 @@ const {
 require("dotenv").config();
 
 const signToken = (id) => {
+  console.log(process.env.JWT_EXPIRES_IN);
   const token = jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
+    algorithm: "HS256",
   });
 
   return token;
@@ -58,6 +59,7 @@ exports.loginUser = async (req, res, next) => {
       username,
       password,
     });
+    console.log(user.id);
     const token = signToken(user.id);
     sendCookie(token, res);
     res.status(200).json({
@@ -119,50 +121,28 @@ exports.getUserByName = async (req, res, next) => {
 exports.protect = async (req, res, next) => {
   try {
     let token = req.cookies?.jwt;
-    console.log(token);
 
     if (!token) {
       throw new AppError(
-        "You are not logged in! Please log in to get access",
+        "You are not logged in! Please log in to get accessssss.",
         401
       );
     }
 
-    try {
-      const decoded = jwt.verify(
-        token,
-        process.env.JWT_SECRET,
-        (err, authorizedData) => {
-          if (err) {
-            //If error send Forbidden (403)
-            console.log("ERROR: Could not connect to the protected route");
-            res.sendStatus(403);
-          } else {
-            //If token is successfully verified, we can send the autorized data
-            res.json({
-              message: "Successful log in",
-              authorizedData,
-            });
-            console.log("SUCCESS: Connected to protected route");
-          }
-        }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const currentUser = await getUserById(decoded.id);
+    if (!currentUser) {
+      throw new AppError(
+        "The user belonging to this token does no longer exist.",
+        401
       );
-      const currentUser = await getUserById(decoded.id);
-
-      if (!currentUser) {
-        throw new AppError(
-          "The user belonging to this token does no longer exist.",
-          401
-        );
-      }
-
-      req.user = currentUser;
-      next();
-    } catch (err) {
-      next(err);
     }
-  } catch (err) {
-    next(err);
+
+    console.log(currentUser);
+    req.user = currentUser;
+    next();
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -175,6 +155,7 @@ exports.allowAccessTo = (...roles) => {
           403
         );
       }
+      next();
     } catch (err) {
       next(err);
     }

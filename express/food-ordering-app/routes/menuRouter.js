@@ -9,18 +9,18 @@ const { protect, allowAccessTo } = require("../controllers/userController");
 const menuRouter = express.Router();
 
 menuRouter.route("/add").post(
-  // protect,
-  // allowAccessTo,
+  protect,
+  allowAccessTo("admin"),
   addMenu
 );
 menuRouter.route("/edit").put(
-  // protect,
-  // allowAccessTo,
+  protect,
+  allowAccessTo("admin"),
   editMenu
 );
 menuRouter.route("/remove/:id").delete(
-    // protect,
-    // allowAccessTo,
+    protect,
+    allowAccessTo("admin"),
     removeMenu
   );
 module.exports = menuRouter;
