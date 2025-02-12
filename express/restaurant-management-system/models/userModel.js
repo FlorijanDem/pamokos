@@ -12,10 +12,11 @@ exports.createUser = async (user) => {
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
   );
     `;
+  // Now user_id is NULL, need fix later
   await sql`
     CREATE TABLE IF NOT EXISTS users_secrets (
     id SERIAL PRIMARY KEY,
-    user_id SERIAL REFERENCES users(id),
+    user_id INTEGER REFERENCES users(id),
     password VARCHAR(255),
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
@@ -46,4 +47,12 @@ exports.createUser = async (user) => {
     INSERT INTO users_secrets ${sql(user.data, "password")}
     `;
   return newUser;
+};
+
+exports.getAllUsers = async () => {
+  const users = await sql`
+    SELECT *
+    FROM users
+  `;
+  return users;
 };
