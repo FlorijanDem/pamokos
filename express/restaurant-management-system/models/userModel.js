@@ -56,3 +56,12 @@ exports.getAllUsers = async () => {
   `;
   return users;
 };
+
+exports.getById = async (id) => {
+  const user = await sql`
+    SELECT *
+    FROM users
+    WHERE id=${id.id}
+  `;
+  return user;
+}
