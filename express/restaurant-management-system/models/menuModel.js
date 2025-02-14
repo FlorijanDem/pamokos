@@ -35,10 +35,38 @@ exports.createMenuItem = async (data) => {
   //    `;
   return item;
 };
+
 exports.getAllMenuItems = async () => {
   const items = await sql`
         SELECT *
         FROM menu_items
     `;
   return items;
+};
+
+exports.menuItemById = async (id) => {
+  const item = await sql`
+        SELECT *
+        FROM menu_items
+        WHERE id=${id.id}
+    `;
+  return item;
+};
+
+exports.deleteMenuItemById = async (id) => {
+  const item = await sql`
+        DELETE
+        FROM menu_items
+        WHERE id=${id.id}
+    `;
+  return item;
+};
+
+exports.updateMenuItemById = async (data) => {
+  const item = await sql`
+        UPDATE  menu_items
+        SET name=${data.data.name}, description=${data.data.description}, price=${data.data.price}, category_id=${data.data.category_id}
+        WHERE id=${data.id}
+    `;
+  return item;
 };
