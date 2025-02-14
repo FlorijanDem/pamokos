@@ -35,3 +35,10 @@ exports.createMenuItem = async (data) => {
   //    `;
   return item;
 };
+exports.getAllMenuItems = async () => {
+  const items = await sql`
+        SELECT *
+        FROM menu_items
+    `;
+  return items;
+};
