@@ -43,8 +43,14 @@ exports.createUser = async (user) => {
           "address"
         )}
     `;
+  const user_id = await sql`
+        SELECT users.id
+        FROM users
+        ORDER BY id DESC LIMIT 1
+  `;
   const password = await sql`
-    INSERT INTO users_secrets ${sql(user.data, "password")}
+    INSERT INTO users_secrets (password, user_id)
+    VALUES (${user.data.password}, ${user_id[0].id})
     `;
   return newUser;
 };
@@ -71,6 +77,20 @@ exports.deleteById = async (id) => {
     DELETE
     FROM users
     WHERE id=${id.id}
+  `;
+  return user;
+};
+
+exports.updateByID = async (data) => {
+  const user = await sql`
+    UPDATE users
+    SET name=${data.data.name}, email=${data.data.email}, phone_number=${data.data.phone_number}
+    WHERE id=${data.id}
+  `;
+  const password = await sql`
+    UPDATE users_secrets
+    SET password=${data.data.password}
+    WHERE user_id=${data.id}
   `;
   return user;
 };

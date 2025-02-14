@@ -5,6 +5,7 @@ const {
   getAllUsers,
   getById,
   deleteById,
+  updateByID,
 } = require("../models/userModel");
 
 exports.createUser = async (req, res, next) => {
@@ -48,6 +49,17 @@ exports.deleteById = async (req, res, next) => {
   try {
     const user = await deleteById({ id });
     res.status(204).json({ user });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+exports.updateByID = async (req, res, next) => {
+  const id = req.params.id;
+  const data = req.body;
+  try {
+    const user = await updateByID({ data, id });
+    res.status(200).json({ user });
   } catch (err) {
     console.error(err);
   }
