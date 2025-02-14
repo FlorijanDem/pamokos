@@ -94,3 +94,21 @@ exports.updateByID = async (data) => {
   `;
   return user;
 };
+
+exports.login = async (data) => {
+  const user = await sql`
+    SELECT users.id, users.name, users.email
+    FROM users
+    WHERE users.email=${data.data.email}
+  `;
+  const pass = await sql`
+    SELECT user_id
+    FROM users_secrets
+    WHERE user_id=${user[0].id} AND password=${data.data.password}
+  `;
+  if (user[0].id == pass[0].user_id) {
+    return user;
+  } else {
+    console.log("Something wrong");
+  }
+};
