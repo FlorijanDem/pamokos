@@ -31,8 +31,4 @@ appointmentRouter
   .patch(checkUpdateAppointmentBody, validate, updateAppointment)
   .delete(validate, deleteAppointment);
 
-appointmentRouter
-  .route("/confirm/:id")
-  .put(protect, allowAccessTo("admin"), validate, updateAppointment);
-
 module.exports = appointmentRouter;

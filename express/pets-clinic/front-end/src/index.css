@@ -5,7 +5,7 @@
 }
 
 .header {
-  @apply bg-gray-100 fixed top-0 z-100 w-full;
+  @apply bg-gray-100 fixed top-0 z-50 w-full shadow-md;
 
   .header-content {
     @apply flex w-full sm:w-2xl mx-auto justify-between px-6 py-4;
@@ -16,10 +16,10 @@
   }
 
   nav {
-    @apply flex flex-col items-end gap-4  bg-gray-100 absolute top-18 rounded-xl right-0 sm:visible sm:flex-row sm:static;
+    @apply flex flex-col items-end gap-4 bg-gray-100 absolute top-18 rounded-xl right-0 sm:visible sm:flex-row sm:static;
 
     a {
-      @apply px-2 py-1 rounded-lg;
+      @apply px-3 py-2 rounded-lg transition-colors duration-200;
     }
 
     a:hover {
@@ -32,60 +32,66 @@
   }
 
   button {
-    @apply px-2 py-1 rounded-lg bg-purple-500 text-white w-10 sm:hidden;
+    @apply px-4 py-2 rounded-lg bg-purple-500 text-white w-12 sm:hidden;
 
     hr {
-      @apply my-1;
+      @apply my-2;
     }
   }
 }
 
 main {
-  @apply mt-26 mb-6 w-full sm:w-2xl mx-auto;
+  @apply mt-28 mb-6 w-full sm:w-2xl mx-auto;
 
   h1 {
-    @apply text-center text-3xl;
+    @apply text-center text-4xl font-semibold;
   }
 }
 
 .add-appointment-btn {
-  @apply cursor-pointer rounded-lg bg-purple-500 py-2 px-4 text-white mt-3 w-full mx-auto;
+  @apply cursor-pointer rounded-lg bg-purple-500 py-3 px-5 text-white mt-5 w-full mx-auto transition-colors duration-200;
+
+  &:hover {
+    @apply bg-purple-600;
+  }
 }
 
-.appointment-edit-button {
-  @apply hover:bg-green-300
+/* .appointment-edit-button {
+  @apply hover:bg-green-400 transition-colors duration-200;
 }
+
 .appointment-delete-button {
-  @apply hover:bg-red-300
-}
+  @apply hover:bg-red-400 transition-colors duration-200;
+} */
+
 .form {
-  @apply mx-auto flex w-max flex-col gap-4;
+  @apply mx-auto flex w-max flex-col gap-6;
 
   h1 {
-    @apply text-center text-3xl;
+    @apply text-center text-3xl font-semibold;
   }
 
   form {
-    @apply flex flex-col gap-2;
+    @apply flex flex-col gap-4;
 
     div {
       @apply bg-inherit;
 
       label {
-        @apply block w-max translate-x-2 translate-y-3 transform px-1 bg-white relative z-10;
+        @apply block w-max translate-x-2 translate-y-3 transform px-2 bg-white relative z-10;
       }
 
       input,
       select,
       textarea {
-        @apply block rounded-lg border-2 bg-inherit p-2 w-full autofill:transition-colors autofill:duration-[99999999s];
+        @apply block rounded-lg border-2 bg-inherit p-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500;
       }
 
       .password-container {
         @apply relative;
 
         #toggle-password {
-          @apply absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer;
+          @apply absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer;
 
           .password-icon {
             @apply h-5 w-5;
@@ -99,11 +105,11 @@ main {
     }
 
     .date-time {
-      @apply flex flex-col gap-4 sm:flex-row;
+      @apply flex flex-col gap-6 sm:flex-row;
     }
 
     button {
-      @apply cursor-pointer rounded-lg bg-purple-500 py-2 px-4 text-white mt-3 w-max mx-auto;
+      @apply cursor-pointer rounded-lg bg-purple-500 py-3 px-5 text-white mt-4 w-max mx-auto transition-colors duration-200;
 
       &:hover {
         @apply bg-purple-600;
@@ -115,7 +121,7 @@ main {
     @apply text-center;
 
     a {
-      @apply text-purple-500;
+      @apply text-purple-500 font-medium;
     }
   }
 }
@@ -124,24 +130,24 @@ main {
   @apply mx-auto;
 
   .filter-sort {
-    @apply flex justify-around py-2;
+    @apply flex justify-between sm:justify-around py-4;
   }
 
   .appointments-list {
-    @apply flex flex-col gap-5 mx-auto mt-4 px-2;
+    @apply flex flex-col gap-6 mx-auto mt-6 px-2;
 
     .appointment-card {
-      @apply border-2 p-4 rounded-2xl;
+      @apply border-2 p-6 rounded-2xl shadow-md transition-all duration-300;
 
       .appointment-card__details {
-        @apply flex gap-10 justify-between;
+        @apply flex gap-8 justify-between;
 
         .notes {
           @apply break-all;
         }
 
         .appointment-card__info {
-          @apply w-20 text-right;
+          @apply w-24 text-right;
         }
       }
 
@@ -151,34 +157,33 @@ main {
     }
 
     .confirm-delete {
-      @apply border-2 border-red-300 p-4 rounded-2xl;
+      @apply border-2 border-red-300 p-6 rounded-2xl bg-red-50 shadow-lg;
 
       .confirm-delete__message {
-        @apply text-center;
+        @apply text-center text-lg font-semibold;
       }
 
       .confirm-delete__controls {
-        @apply flex gap-6 justify-center mt-4;
+        @apply flex gap-8 justify-center mt-4;
       }
-      
     }
   }
 
   .pagination {
-    @apply flex justify-between w-full mt-4;
+    @apply flex justify-between w-full mt-6;
 
     button {
-      @apply border-none font-bold
+      @apply border-none font-bold text-purple-500 transition-colors duration-200;
     }
   }
 }
 
 .footer {
-  @apply text-center py-4 bg-gray-100;
+  @apply text-center py-6 bg-gray-100 mt-8;
 }
 
 button {
-  @apply cursor-pointer border-2 py-1 px-4 rounded-lg  transition-colors duration-300;
+  @apply cursor-pointer border-2 py-2 px-5 rounded-lg transition-colors duration-300;
 }
 
 .error-boundary {
