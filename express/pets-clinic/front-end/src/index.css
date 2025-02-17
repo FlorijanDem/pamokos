@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+.app-container {
+  @apply grid min-h-screen grid-cols-1 grid-rows-[1fr_auto] text-gray-700;
+}
+
+.header {
+  @apply bg-gray-100 fixed top-0 z-100 w-full;
+
+  .header-content {
+    @apply flex w-full sm:w-2xl mx-auto justify-between px-6 py-4;
+  }
+
+  .logo {
+    @apply h-10 w-10;
+  }
+
+  nav {
+    @apply flex flex-col items-end gap-4  bg-gray-100 absolute top-18 rounded-xl right-0 sm:visible sm:flex-row sm:static;
+
+    a {
+      @apply px-2 py-1 rounded-lg;
+    }
+
+    a:hover {
+      @apply text-purple-500;
+    }
+
+    a.active {
+      @apply bg-purple-500 text-white;
+    }
+  }
+
+  button {
+    @apply px-2 py-1 rounded-lg bg-purple-500 text-white w-10 sm:hidden;
+
+    hr {
+      @apply my-1;
+    }
+  }
+}
+
+main {
+  @apply mt-26 mb-6 w-full sm:w-2xl mx-auto;
+
+  h1 {
+    @apply text-center text-3xl;
+  }
+}
+
+.add-appointment-btn {
+  @apply cursor-pointer rounded-lg bg-purple-500 py-2 px-4 text-white mt-3 w-full mx-auto;
+}
+
+.appointment-edit-button {
+  @apply hover:bg-green-300
+}
+.appointment-delete-button {
+  @apply hover:bg-red-300
+}
+.form {
+  @apply mx-auto flex w-max flex-col gap-4;
+
+  h1 {
+    @apply text-center text-3xl;
+  }
+
+  form {
+    @apply flex flex-col gap-2;
+
+    div {
+      @apply bg-inherit;
+
+      label {
+        @apply block w-max translate-x-2 translate-y-3 transform px-1 bg-white relative z-10;
+      }
+
+      input,
+      select,
+      textarea {
+        @apply block rounded-lg border-2 bg-inherit p-2 w-full autofill:transition-colors autofill:duration-[99999999s];
+      }
+
+      .password-container {
+        @apply relative;
+
+        #toggle-password {
+          @apply absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer;
+
+          .password-icon {
+            @apply h-5 w-5;
+          }
+        }
+      }
+
+      .form-error {
+        @apply text-red-500 text-sm text-right pr-2;
+      }
+    }
+
+    .date-time {
+      @apply flex flex-col gap-4 sm:flex-row;
+    }
+
+    button {
+      @apply cursor-pointer rounded-lg bg-purple-500 py-2 px-4 text-white mt-3 w-max mx-auto;
+
+      &:hover {
+        @apply bg-purple-600;
+      }
+    }
+  }
+
+  .form-message {
+    @apply text-center;
+
+    a {
+      @apply text-purple-500;
+    }
+  }
+}
+
+.appointments-container {
+  @apply mx-auto;
+
+  .filter-sort {
+    @apply flex justify-around py-2;
+  }
+
+  .appointments-list {
+    @apply flex flex-col gap-5 mx-auto mt-4 px-2;
+
+    .appointment-card {
+      @apply border-2 p-4 rounded-2xl;
+
+      .appointment-card__details {
+        @apply flex gap-10 justify-between;
+
+        .notes {
+          @apply break-all;
+        }
+
+        .appointment-card__info {
+          @apply w-20 text-right;
+        }
+      }
+
+      .appointment-card__controls {
+        @apply flex justify-between;
+      }
+    }
+
+    .confirm-delete {
+      @apply border-2 border-red-300 p-4 rounded-2xl;
+
+      .confirm-delete__message {
+        @apply text-center;
+      }
+
+      .confirm-delete__controls {
+        @apply flex gap-6 justify-center mt-4;
+      }
+      
+    }
+  }
+
+  .pagination {
+    @apply flex justify-between w-full mt-4;
+
+    button {
+      @apply border-none font-bold
+    }
+  }
+}
+
+.footer {
+  @apply text-center py-4 bg-gray-100;
+}
+
+button {
+  @apply cursor-pointer border-2 py-1 px-4 rounded-lg  transition-colors duration-300;
+}
+
+.error-boundary {
+  @apply text-center py-4 bg-red-100 mt-20;
+}
