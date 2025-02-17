@@ -1,6 +1,5 @@
 const { query, checkExact } = require("express-validator");
 const { getUserById } = require("../models/userModel");
-const { getAppointmentCount } = require("../models/appointmentModel");
 
 exports.checkGetAllAppointmentsFilter = [
   query("page")
