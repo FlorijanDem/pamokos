@@ -147,3 +147,16 @@ exports.usersWorkouts = async (req, res, next) => {
     next(err);
   }
 };
+
+// exports.getAuthenticatedUser = (req, res, next) => {
+//   try {
+//     const authUser = req.user;
+//     console.log(authUser)
+//     res.status(200).json({
+//       status: "success",
+//       data: authUser,
+//     })
+//   } catch (err) {
+//     next(err)
+//   }
+// }
