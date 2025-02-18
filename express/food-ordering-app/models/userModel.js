@@ -22,9 +22,9 @@ exports.loginUser = async (username, password) => {
   const name = username.username;
   const pass = username.password;
   const [user] = await sql`
-        SELECT users.id, users.username, users.email, users.created_at, users.updated_at
+        SELECT users.*
         FROM users
-        WHERE users.username = ${name} AND users.password = ${pass};
+        WHERE users.username = ${name};
     `;
   return user;
 };

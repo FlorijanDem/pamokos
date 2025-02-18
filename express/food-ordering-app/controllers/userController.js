@@ -9,6 +9,8 @@ const {
 } = require("../models/userModel");
 require("dotenv").config();
 
+const bcrypt = require("bcryptjs");
+
 const signToken = (id) => {
   console.log(process.env.JWT_EXPIRES_IN);
   const token = jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -32,6 +34,10 @@ const sendCookie = (token, res) => {
 exports.createUser = async (req, res, next) => {
   try {
     const newUser = req.body;
+
+    const hashedPassword = await bcrypt.hash(newUser.password, 12);
+
+    newUser.password = hashedPassword;
 
     const user = await createUser({
       ...newUser,
@@ -59,9 +65,21 @@ exports.loginUser = async (req, res, next) => {
       username,
       password,
     });
-    console.log(user.id);
+
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    if (!isPasswordCorrect) {
+      res.status(401).json({
+        message: "Invalid username or password",
+      });
+    }
+
     const token = signToken(user.id);
     sendCookie(token, res);
+
+    user.id = undefined;
+    user.password = undefined;
+    user.role = undefined;
+    user.email = undefined;
     res.status(200).json({
       message: "Success! You are logged in!",
       user,
