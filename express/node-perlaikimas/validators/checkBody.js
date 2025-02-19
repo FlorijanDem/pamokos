@@ -1,4 +1,4 @@
-const { body } = require("express-validator");
+const { body, ValidationChain } = require("express-validator");
 
 exports.checkSignupBody = [
   body("username")
@@ -53,13 +53,17 @@ exports.checkTaskBody = [
     .isISO8601("yyyy-mm-dd")
     .toDate()
     .withMessage(" Must be in YYYY-MM-DD format."),
-  // Latter need to add custom filters
   body("priority")
     .isString()
+    .isIn(["Low", "Medium", "High"])
     .withMessage(`Must be one of "Low", "Medium", "High".`),
   body("category")
     .isString()
     .notEmpty()
+    .isIn(["New", "Old", "Maybe"])
     .withMessage("Required, predefined set of categories."),
-  body("status").isString().withMessage(`Must be "Pending" or "Completed".`),
+  body("status")
+    .isString()
+    .isIn(["Pending", "Completed"])
+    .withMessage(`Must be "Pending" or "Completed".`),
 ];
