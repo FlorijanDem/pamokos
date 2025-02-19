@@ -8,7 +8,6 @@ const {
 require("dotenv").config();
 
 exports.getAllTasks = async (req, res, next) => {
-  console.log(req.user.id);
   const user_id = req.user.id;
   try {
     const tasks = await getAllTasks({ user_id });
@@ -30,7 +29,7 @@ exports.addTask = async (req, res, next) => {
       data,
       user_id,
     });
-    res.status(200).json({
+    res.status(201).json({
       message: "Success",
       tasks: tasks,
     });
@@ -43,7 +42,6 @@ exports.editTask = async (req, res, next) => {
   const id = req.params.id;
   const data = req.body;
   const user_id = req.user.id;
-  let message;
   try {
     const task = await editTask({
       id,
@@ -51,14 +49,15 @@ exports.editTask = async (req, res, next) => {
       user_id,
     });
     if (task === undefined) {
-      message = "You do not have permision";
+      res.status(403).json({
+        message: "You do not have permision",
+      });
     } else {
-      message = "Success";
+      res.status(201).json({
+        message: "Success",
+        task: task,
+      });
     }
-    res.status(200).json({
-      message: message,
-      task: task,
-    });
   } catch (err) {
     console.error(err);
   }

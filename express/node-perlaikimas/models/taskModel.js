@@ -50,6 +50,7 @@ exports.removeTask = async (data) => {
     FROM tasks
     WHERE id=${data.id} AND user_id=${data.user_id};
   `;
+  console.log(task);
   return task;
 };
 
