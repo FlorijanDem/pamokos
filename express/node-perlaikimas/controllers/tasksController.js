@@ -1,5 +1,3 @@
-const AppError = require("../utils/appError");
-
 const {
   getAllTasks,
   addTask,
@@ -7,10 +5,13 @@ const {
   removeTask,
   getOneTask,
 } = require("../models/taskModel");
+require("dotenv").config();
 
 exports.getAllTasks = async (req, res, next) => {
+  console.log(req.user.id);
+  const user_id = req.user.id;
   try {
-    const tasks = await getAllTasks({});
+    const tasks = await getAllTasks({ user_id });
     res.status(200).json({
       message: "Success",
       tasks,
@@ -21,10 +22,13 @@ exports.getAllTasks = async (req, res, next) => {
 };
 
 exports.addTask = async (req, res, next) => {
+  const user_id = req.user.id;
+
   const data = req.body;
   try {
     const tasks = await addTask({
       data,
+      user_id,
     });
     res.status(200).json({
       message: "Success",
@@ -38,13 +42,21 @@ exports.addTask = async (req, res, next) => {
 exports.editTask = async (req, res, next) => {
   const id = req.params.id;
   const data = req.body;
+  const user_id = req.user.id;
+  let message;
   try {
     const task = await editTask({
       id,
       data,
+      user_id,
     });
+    if (task === undefined) {
+      message = "You do not have permision";
+    } else {
+      message = "Success";
+    }
     res.status(200).json({
-      message: "Success",
+      message: message,
       task: task,
     });
   } catch (err) {
@@ -54,9 +66,11 @@ exports.editTask = async (req, res, next) => {
 
 exports.removeTask = async (req, res, next) => {
   const id = req.params.id;
+  const user_id = req.user.id;
   try {
     const task = await removeTask({
       id,
+      user_id,
     });
     res.status(204).json({});
   } catch (err) {
@@ -66,8 +80,9 @@ exports.removeTask = async (req, res, next) => {
 
 exports.getOneTask = async (req, res, next) => {
   const id = req.params.id;
+  const user_id = req.user.id;
   try {
-    const task = await getOneTask({ id });
+    const task = await getOneTask({ id, user_id });
     res.status(200).json({
       message: "Success",
       task: task,

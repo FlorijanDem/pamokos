@@ -18,7 +18,7 @@ exports.createUser = async (user) => {
   return newUser;
 };
 
-exports.loginUser = async (username, password) => {
+exports.loginUser = async (username) => {
   const name = username.username;
   const [user] = await sql`
         SELECT users.*
@@ -28,15 +28,6 @@ exports.loginUser = async (username, password) => {
   return user;
 };
 
-exports.getAllUsers = async () => {
-  const users = await sql`
-    SELECT users.id, users.username, users.email, users.created_at, users.updated_at
-        FROM users;
-  `;
-  console.log(users);
-  return users;
-};
-
 exports.getUserById = async (id) => {
   const [user] = await sql`
     SELECT *
@@ -44,14 +35,5 @@ exports.getUserById = async (id) => {
     WHERE users.id = ${id};
   `;
 
-  return user;
-};
-
-exports.getUserByName = async (username) => {
-  const [user] = await sql`
-    SELECT users.*
-    FROM users
-    WHERE users.username = ${username};
-  `;
   return user;
 };

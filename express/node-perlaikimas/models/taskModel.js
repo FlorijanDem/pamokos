@@ -1,6 +1,5 @@
 const { sql } = require("../dbConnection");
 exports.addTask = async (data) => {
-  console.log(data);
   await sql`
     CREATE TABLE IF NOT EXISTS tasks (
     id SERIAL PRIMARY KEY,
@@ -9,19 +8,20 @@ exports.addTask = async (data) => {
     due_date TIMESTAMP,
     priority VARCHAR(255),
     category VARCHAR(255),
-    status VARCHAR(255)
+    status VARCHAR(255),
+    user_id INTEGER
   );
     `;
+  const title = data.data.title;
+  const description = data.data.description;
+  const due_date = data.data.due_date;
+  const priority = data.data.priority;
+  const category = data.data.category;
+  const status = data.data.status;
+  const user_id = data.user_id;
   const newTask = await sql`
-    INSERT INTO tasks   ${sql(
-      data.data,
-      "title",
-      "description",
-      "due_date",
-      "priority",
-      "category",
-      "status"
-    )}
+    INSERT INTO tasks (title, description, due_date, priority, category, status, user_id)
+    VALUES (${title}, ${description}, ${due_date}, ${priority}, ${category}, ${status}, ${user_id})
     RETURNING *
   `;
   return newTask;
@@ -29,7 +29,7 @@ exports.addTask = async (data) => {
 
 exports.editTask = async (data) => {
   const id = data.id;
-
+  const user_id = data.user_id;
   const description = data.data.description;
   const due_date = data.data.due_date;
   const priority = data.data.priority;
@@ -38,35 +38,35 @@ exports.editTask = async (data) => {
   const [newTask] = await sql`
     UPDATE tasks
     SET description=${description}, due_date=${due_date}, priority=${priority}, category=${category}, status=${status}
-    WHERE id=${id}
-    RETURNING tasks.*;
+    WHERE id=${id} AND user_id=${user_id}
+    RETURNING tasks.*
   `;
   return newTask;
 };
 
-exports.removeTask = async (id) => {
-  const toRemove = id.id;
+exports.removeTask = async (data) => {
   const [task] = await sql`
     DELETE
     FROM tasks
-    WHERE id=${toRemove};
+    WHERE id=${data.id} AND user_id=${data.user_id};
   `;
   return task;
 };
 
-exports.getAllTasks = async () => {
+exports.getAllTasks = async (user_id) => {
   const task = await sql`
     SELECT *
-    FROM tasks;
+    FROM tasks
+    WHERE user_id=${user_id.user_id};
   `;
   return task;
 };
 
-exports.getOneTask = async (id) => {
+exports.getOneTask = async (data) => {
   const task = await sql`
       SELECT *
       FROM tasks
-      WHERE id=${id.id};
+      WHERE id=${data.id} AND user_id=${data.user_id};
     `;
   return task;
 };

@@ -1,12 +1,6 @@
 const AppError = require("../utils/appError");
 const jwt = require("jsonwebtoken");
-const {
-  createUser,
-  loginUser,
-  getUserById,
-  getAllUsers,
-  getUserByName,
-} = require("../models/userModel");
+const { createUser, loginUser, getUserById } = require("../models/userModel");
 require("dotenv").config();
 
 const bcrypt = require("bcryptjs");
@@ -89,17 +83,6 @@ exports.loginUser = async (req, res, next) => {
   }
 };
 
-exports.getAllUsers = async (req, res, next) => {
-  try {
-    const users = await getAllUsers({});
-    res.status(200).json({
-      users,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
-
 exports.getUserById = async (req, res, next) => {
   const userId = req.params.id;
   if (!userId || isNaN(userId)) return next();
@@ -113,22 +96,6 @@ exports.getUserById = async (req, res, next) => {
 
     res.status(200).json({
       status: "success",
-      user,
-    });
-  } catch (err) {
-    next(err);
-  }
-};
-
-exports.getUserByName = async (req, res, next) => {
-  const username = req.params.username;
-
-  try {
-    const user = await getUserByName(username);
-
-    user.password = undefined;
-
-    res.status(200).json({
       user,
     });
   } catch (err) {
@@ -156,26 +123,9 @@ exports.protect = async (req, res, next) => {
       );
     }
 
-    console.log(currentUser);
     req.user = currentUser;
     next();
   } catch (error) {
     next(error);
   }
-};
-
-exports.allowAccessTo = (...roles) => {
-  return (req, res, next) => {
-    try {
-      if (!roles.includes(req.user.role)) {
-        throw new AppError(
-          "You do not have permission to perform this action",
-          403
-        );
-      }
-      next();
-    } catch (err) {
-      next(err);
-    }
-  };
 };
