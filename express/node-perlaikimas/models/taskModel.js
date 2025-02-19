@@ -50,7 +50,6 @@ exports.removeTask = async (data) => {
     FROM tasks
     WHERE id=${data.id} AND user_id=${data.user_id};
   `;
-  console.log(task);
   return task;
 };
 
@@ -64,7 +63,7 @@ exports.getAllTasks = async (user_id) => {
 };
 
 exports.getOneTask = async (data) => {
-  const task = await sql`
+  const [task] = await sql`
       SELECT *
       FROM tasks
       WHERE id=${data.id} AND user_id=${data.user_id};

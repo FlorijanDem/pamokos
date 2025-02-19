@@ -6,7 +6,6 @@ require("dotenv").config();
 const bcrypt = require("bcryptjs");
 
 const signToken = (id) => {
-  console.log(process.env.JWT_EXPIRES_IN);
   const token = jwt.sign({ id }, process.env.JWT_SECRET, {
     algorithm: "HS256",
   });

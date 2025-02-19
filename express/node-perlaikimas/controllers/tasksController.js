@@ -82,10 +82,16 @@ exports.getOneTask = async (req, res, next) => {
   const user_id = req.user.id;
   try {
     const task = await getOneTask({ id, user_id });
-    res.status(200).json({
-      message: "Success",
-      task: task,
-    });
+    if (task === undefined) {
+      res.status(403).json({
+        message: "You do not have permision",
+      });
+    } else {
+      res.status(200).json({
+        message: "Success",
+        task: task,
+      });
+    }
   } catch (err) {
     console.error(err);
   }
