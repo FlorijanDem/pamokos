@@ -6,7 +6,7 @@ exports.createUser = async (data) => {
             full_name VARCHAR(255),
             email VARCHAR(255),
             github_username VARCHAR(255),
-            ticket_code VARCHAR(255)
+            ticket_code SERIAL
         )
     `;
   const newUser = await sql`
@@ -19,4 +19,12 @@ exports.createUser = async (data) => {
         RETURNING users.*
     `;
   return newUser;
+};
+
+exports.getUser = async () => {
+  const data = await sql`
+    SELECT *
+    FROM users;
+  `;
+  return data;
 };

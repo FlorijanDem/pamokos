@@ -13,7 +13,7 @@ export default function Form() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:5008/users", {
+      const response = await fetch("http://localhost:5006/users", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -23,22 +23,43 @@ export default function Form() {
       if (!response.ok) {
         throw new Error("Response error!");
       }
-      navigate("/success");
+      navigate("/ticket");
     } catch (err) {
       console.error(err);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="full_name">Full name</label>
-        <input
-          type="text"
-          id="full_name"
-          {...register("name", { required: true, pattern: /^[A-Z][a-z]+$/ })}
-        />
-      </div>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor="full_name">Full name</label>
+          <input
+            type="text"
+            id="full_name"
+            {...register("full_name", { required: true, pattern: /^[A-Z][a-z]+$/ })}
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            {...register("email", { required: true })}
+          />
+        </div>
+        <div>
+          <label htmlFor="github_username">GitHub username</label>
+          <input
+            type="text"
+            id="github_username"
+            {...register("github_username", { required: true })}
+          />
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
   );
 }
