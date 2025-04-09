@@ -54,3 +54,15 @@ Lines of JSX code writen:
 Lines of README:
 188
 
+Wednesday 09 April
+Lines of JavaScript code writen:
+8923
+Lines of HTML code writen:
+3191
+Lines of Css code writen:
+1335
+Lines of JSX code writen:
+3628
+Lines of README:
+445
+
